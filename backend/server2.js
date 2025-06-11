@@ -1,5 +1,10 @@
 // backend/server2.js
 
+import dotenv from 'dotenv-safe';
+dotenv.config();
+import jwt from 'jsonwebtoken';
+console.log('JWT_SECRET:', process.env.JWT_SECRET);
+console.log(process.env["JWT_SECRET"]);
 import express from 'express';
 import path from 'path';
 import bodyParser from 'body-parser';
@@ -21,6 +26,7 @@ app.use(express.static(path.join(__dirname, '..', 'public')));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
+
 app.get('/', (req, res) => {
   res.render('principal');
 });
@@ -28,12 +34,23 @@ app.get('/', (req, res) => {
 app.post('/login', (req, res) => {
   const { user, campo } = req.body;
 
+
+  if (!user || !campo) {
+    return res.status(400).send('Preencha todos os campos.');
+  }
+
+
+  const secretKey = process.env.JWT_SECRET || 'chaveSuperSecretaDoJogo';
+  const token = jwt.sign({ nome: user }, secretKey, { expiresIn: '5m' });
+
+
   const pistola = new Habilidades("pistola", 20, 2);
   const espingarda = new Habilidades("espingarda", 30, 6);
   const soco = new Habilidades("soco", 15, 2);
   const peixera = new Habilidades("peixeira", 30, 4);
-  const padinCico = new Habilidades("em nome de padin ciço", 60, 10);
-  const penitencia = new Habilidades("penitencia", 40, 4);
+  const padinCico = new Habilidades("em nome de padim Ciço", 60, 10);
+  const penitencia = new Habilidades("penitência", 40, 4);
+
 
   const caixa = new CaixaItens();
   caixa.adicionarItem("cantil de água");
@@ -53,9 +70,10 @@ app.post('/login', (req, res) => {
       prota = new Protagonista(user, campo, 120, 7, 2, 50, padinCico, penitencia, 10, caixa);
       break;
     default:
-      return res.send("Ocupação inválida.");
+      return res.status(400).send("Ocupação inválida.");
   }
 
+  res.setHeader('Authorization', `Bearer ${token}`);
   res.render('infoprota', {
     prota: {
       nome: prota.nome,
@@ -76,6 +94,7 @@ app.post('/login', (req, res) => {
     }
   });
 });
+
 
 app.listen(PORT, () => {
   console.log(`Servidor rodando em http://localhost:${PORT}`);
