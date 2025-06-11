@@ -1,0 +1,75 @@
+#info-geral-prota {
+    background-image: url("/img/fundo_caatinga (1).png");
+    background-size: cover;           
+    background-position: center;      
+    background-repeat: no-repeat;     
+    position: relative;
+    display: flex;                    
+    flex-direction: column;
+    align-items: center;              
+    justify-content: center;          
+    min-height: 100vh;               
+  }
+  li {
+    margin: 7px;
+    font-family: 'Courier New', Courier, monospace;
+  }
+  .info-geral {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(78, 45, 1, 0.849);
+    color: white;
+    width: 30%;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .menu-container {
+    margin: 20px;
+  }
+  
+  .conteudo {
+    padding: 15px;
+    background-color: #f3f3f3;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-family: Arial, sans-serif;
+  }
+  
+  #menuInfo {
+    display: flex;
+    background-color: #3d1501;
+    font-size: 16px;
+    color: white; 
+  }
+  
+  #navMenu {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+  
+  #Menu {
+    margin-left: 25px;
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+    font-size: 30px;
+  }
+  
+  #campo {
+  
+    width: 150px;
+    padding: 5px 10px;
+    font-size: 16px;
+    color: white;
+    border: 1px solid #3d1501;
+    background-color: #3d1501; /* Fundo claro para contraste */
+    border-radius: 4px;
+  }
+  
