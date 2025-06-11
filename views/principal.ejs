@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Jogo do Cangaço</title>
+
+  <!-- Fonte pixelizada -->
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/principal.css">
+</head>
+<body>
+
+  <!-- Tela inicial -->
+  <div id="tela-inicial" class="tela ativa">
+    <div class="infoInicial">
+      <h1>Bem-vindo RPG - Lenda dos Cangaceiros</h1>
+      <button id="btn-iniciar">Iniciar Jogo</button>
+    </div>
+  </div>
+
+  <!-- Tela principal -->
+  <div id="tela-principal" class="tela">
+
+    <div id="ceu"></div>
+
+    <div id="chao">
+      <!-- Protagonista -->
+      <img src="/imgspjcangaco/protagonista_relaxado.png" class="protagonista relaxado" alt="protagonista relaxado">
+      <img src="/imgspjcangaco/protagonista_ataque.png" class="protagonista ataque" alt="protagonista atacando">
+      <img src="/imgspjcangaco/protagonista_rip.png" class="protagonista morto" alt="protagonista morto">
+    </div>
+
+    <div class="login-container">
+      <h2>Dados do Personagem</h2>
+      <form action="/login" method="POST">
+        <label for="user">Nome</label>
+        <input type="text" id="user" name="user" placeholder="Digite o nome do seu personagem" required>
+
+        <label for="campo">Escolha uma ocupação:</label>
+        <select id="campo" name="campo" aria-placeholder="ocupação" required>
+          <option value="nome">Cabra da peste</option>
+          <option value="email">ocupação2</option>
+          <option value="telefone">ocupação3</option>
+        </select>
+
+        <button class="button-login" type="submit">OK</button>
+      </form>
+    </div>
+
+  </div>
+    
+  <script src="/js/principal.js"></script>
+</body>
+</html>
