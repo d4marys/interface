@@ -1,10 +1,7 @@
-// database.js atualizado — estrutura e inserção com IDs únicos e consistentes
+// database.js (modo ES Module)
+import mysql from "mysql2/promise";
 
-"use strict";
-
-const mysql = require("mysql2/promise");
-
-class Database {
+export default class Database {
   constructor() {
     this.connection = null;
   }
@@ -16,16 +13,14 @@ class Database {
         host: "localhost",
         user: "root",
         password: "2207",
-        database: "test", // nome do banco já corrigido
+        database: "test",
       });
       console.log("Conectado ao MySQL. ID: " + this.connection.threadId);
 
       await this._createTables();
       await this._insertInitialFixedData();
 
-      console.log(
-        "Estrutura do banco de dados e dados iniciais verificados/inseridos."
-      );
+      console.log("Estrutura do banco de dados e dados iniciais verificados/inseridos.");
     } catch (err) {
       console.error("Erro ao conectar ou inicializar o banco de dados:", err);
       throw err;
@@ -381,4 +376,4 @@ class Database {
   }
 }
 
-module.exports = Database;
+export{Database}
