@@ -34,7 +34,7 @@
         <li>Dano Habilidade 2: <%= prota.habilidade2.dano %></li>
         <li>Falha Habilidade 2: <%= prota.habilidade2.falha %></li>
       </ul>
-      <button class="button-continue">Jogar</button>
+      <button id="botao-jogar" class="button-continue">Jogar</button>
     </div>
 
     <div id="ceu"></div>
@@ -44,5 +44,11 @@
       <img src="/imgspjcangaco/protagonista_rip.png" class="protagonista morto" alt="protagonista morto">
     </div>
   </div>
+
+ <script>
+  document.getElementById('botao-jogar').addEventListener('click', function () {
+    window.location.href = 'http://localhost:3000/';
+  })
+</script>
 </body>
 </html>
